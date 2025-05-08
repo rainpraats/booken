@@ -46,3 +46,5 @@ const customerSchema = new mongoose.Schema({
     min: [1, 'Quantity must be at least 1'],
   },
 });
+
+export default mongoose.model('Customer', customerSchema);

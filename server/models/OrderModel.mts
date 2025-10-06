@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
+import { IOrder } from '../interfaces/IOrder.js';
 
-const customerSchema = new mongoose.Schema({
+const orderModel = new mongoose.Schema<IOrder>({
   givenName: {
     type: String,
     required: [true, 'First name is required'],
@@ -47,4 +48,4 @@ const customerSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model('Customer', customerSchema);
+export default mongoose.model<IOrder>('Order', orderModel);

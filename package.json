@@ -6,14 +6,21 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:server": "tsc --project tsconfig.server.json",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server": "nodemon ./server/server.mjs"
+    "server": "npm run build:server && NODE_ENV=production node dist/server/server.mjs",
+    "dev:server": "nodemon --exec \"npm run build:server && node dist/server/server.mjs\" --watch server --ext mts,ts"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^8.1.0",
+    "express-xss-sanitizer": "^2.0.1",
+    "helmet": "^8.1.0",
+    "hpp": "^0.2.3",
     "mongoose": "^8.14.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -22,6 +29,11 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/express-xss-sanitizer": "^2.0.0",
+    "@types/hpp": "^0.2.6",
+    "@types/node": "^24.7.0",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
